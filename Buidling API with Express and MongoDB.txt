@@ -1,0 +1,65 @@
+//--------------------------------------------------------------------- 
+// Building a RESTful API with Express using MongoDB:
+//--------------------------------------------------------------------- 
+// - Express --> HTTP server - handle incomming requests with middleware functions
+// - MongoDB --> NoSQL/Document Database
+
+// Starting the project:
+//--------------------------------------------------------------------- 
+// npm init --yes => Package.json
+
+// Installing (and load later) modules: 
+//--------------------------------------------------------------------- 
+// npm i express mongoose joy
+
+// Connecting services: 
+//--------------------------------------------------------------------- 
+// - Ensure that HTTP server is listening on a given port (environment variable)
+// - Ensure that MongoDB database is running (create new db for the project)
+// ---> Collection -> Documents (records)
+// - Connect the MongoDB database at startup time
+
+// Creating the API with multiple routes/endpoints -> /api/RESOURCES:
+//--------------------------------------------------------------------- 
+// - Allowing one or all CRUD operations
+// - The HTTP Server defined Routes/Endpoints to handle incoming requests 
+// (with HTTP Protocol -> CRUD operations)
+// ---> Route Handlers 
+// - Schema and Model Definition (Database Level/Layer): 
+// ---> Defining Mongoose Schema and Model - Data Validation with Mongoose
+// ---> Testing the Schema - CRUD Operations - Saving, Querying, Removing the document
+// - Request Processing Pipeline: (Request Level/Layer)
+// ---> Middleware function
+// ---> Data Validation with Joy
+// ---> Testing each endpoints
+
+//--------------------------------------------------------------------- 
+// Notes: 
+//--------------------------------------------------------------------- 
+// - Request Processing Pipeline - a collection of middleware function that do
+// something with the request (such as request validation)
+// - Request Params vs. Query Params (after "?")
+// - HTTP statuses:
+// ---> 200 - OK
+// ---> 404 - Not Found (no resource found - Route/Endpoint or Object in DB)
+// ---> 400 - Bad Request 
+// ---> 500 - Server Error 
+// - The body Payload is important to be in a format we can handle and should as minimal as possible
+// for better performance.
+// HTTP Verbs/CRUD Ops: 
+// ---> GET: Client: Endpoint | Server: Resource in the response (HEAD)
+// ---> POST: Client: Endpoint + Request.Body | Server: New Resource in the response (LOCATION)
+// ---> PUT: Client: Endpoint + Request.Body | Server: Updated full resource 
+// ---> (PATCH): Client: Endpoint + Request.Body | Server: Updated a part of the resource 
+// ---> DELETE: Client: Endpoint | Server: No Response (or Original Resource)
+// Data Validation:
+// ---> Two Validations on the Request Level and on Database Level.
+// Endpoint vs. Route:
+// ---> Route = full path that locate the resource
+// ---> Endpoint = HTTP Verb + Route
+// REST: 
+// ---> separate layers: API vs. DB + API shouldn't influence the business logic 
+// data should be keep hidden/private 
+// ---> the client shouldn't know if data cames from DB or another API
+// ---> stateless: Sever don't handle session and states
+// ---> clarity in cacheability: response is cacheable or not
